@@ -144,3 +144,12 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,flutter,visualstudiocode
+
+
+**/android/
+**/ios/
+**/linux/
+**/macos/
+**/test/
+**/web/
+**/windows/

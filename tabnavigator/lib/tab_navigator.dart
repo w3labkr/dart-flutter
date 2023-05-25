@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tabnavigator/single_screen.dart';
 
 enum TabItem { home, chat, event, place, person }
 
