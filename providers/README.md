@@ -1,4 +1,4 @@
-# provider_counter
+# providers
 
 A new Flutter project.
 
@@ -18,6 +18,8 @@ samples, guidance on mobile development, and a full API reference.
 ## Screenshot
 
 ![Screenshot](./Screenshot.png)
+![Screenshot2](./Screenshot2.png)
+![Screenshot3](./Screenshot3.png)
 
 ## Installing
 
@@ -27,6 +29,8 @@ samples, guidance on mobile development, and a full API reference.
   ```shell
   flutter pub add provider
   ```
+
+  Import it
 
   ```dart
   import 'package:provider/provider.dart';

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'home_screen.dart';
+import 'favorite_provider.dart';
+import 'favorite_screen.dart';
 import 'counter_provider.dart';
+import 'counter_screen.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider<CounterProvider>(create: (_) => CounterProvider()),
+    ChangeNotifierProvider<FavoriteProvider>(create: (_) => FavoriteProvider()),
   ], child: const MyApp()));
 }
 
@@ -41,41 +46,40 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int selectedIndex = 0;
+
+  final widgetOptions = const [
+    HomeScreen(),
+    FavoriteScreen(),
+    CounterScreen(),
+  ];
+
+  void _onTap(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ChangeNotifierProvider(
-        create: (BuildContext context) => CounterProvider(),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                context.watch<CounterProvider>().count.toString(),
-                style: const TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    child: const Icon(Icons.add),
-                    onPressed: () => context.read<CounterProvider>().increase(),
-                  ),
-                  const SizedBox(width: 40),
-                  ElevatedButton(
-                    child: const Icon(Icons.remove),
-                    onPressed: () => context.read<CounterProvider>().decrease(),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
+      body: widgetOptions.elementAt(selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.tab), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.tab), label: "Favorite"),
+          BottomNavigationBarItem(icon: Icon(Icons.tab), label: "Counter"),
+        ],
+        onTap: _onTap,
+        currentIndex: selectedIndex,
       ),
     );
   }
