@@ -10,8 +10,6 @@ A collection of Flutter examples.
     - [Flutter Version Manager](#flutter-version-manager)
     - [Install Android Studio](#install-android-studio)
     - [Install Visual Studio](#install-visual-studio)
-  - [Configure](#configure)
-    - [Geolocator](#geolocator)
   - [Commands](#commands)
   - [Deployment](#deployment)
 
@@ -127,37 +125,6 @@ flutter config --no-enable-windows-desktop
 
 ```shell
 flutter doctor
-```
-
-## Configure
-
-### Geolocator
-
-Edit `ios/Runner/info.plist`
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<plist version="1.0">
-<dict>
-    ...
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app needs access to location when open.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>This app needs access to location when in the background.</string>
-</dict>
-</plist>
-```
-
-Edit `android/app/src/main/AndroidMainfest.xml`
-
-```xml
-<manifest ... >
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    ...
-</manifest>
 ```
 
 ## Commands
