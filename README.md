@@ -10,8 +10,9 @@ A collection of Flutter examples.
     - [Flutter Version Manager](#flutter-version-manager)
     - [Install Android Studio](#install-android-studio)
     - [Install Visual Studio](#install-visual-studio)
-  - [Commands](#commands)
   - [Deployment](#deployment)
+  - [Commands](#commands)
+  - [Examples](#examples)
 
 ## Installation
 
@@ -127,14 +128,22 @@ flutter config --no-enable-windows-desktop
 flutter doctor
 ```
 
+## Deployment
+
+Android app: `build\app\outputs\flutter-apk\app-release.apk`
+
+```shell
+fvm flutter build apk --release --target-platform=android-arm64
+```
+
 ## Commands
 
 ```shell
-fvm flutter create --org com.example application
+fvm flutter create --org com.example <APPLICATION_NAME>
 ```
 
 ```shell
-cd application
+cd <APPLICATION_NAME>
 ```
 
 ```shell
@@ -154,10 +163,47 @@ fvm flutter pub upgrade
 fvm flutter clean
 ```
 
-## Deployment
+## Examples
 
-Android app: `build\app\outputs\flutter-apk\app-release.apk`
+StatelessWidget
 
-```shell
-fvm flutter build apk --release --target-platform=android-arm64
+```dart
+import 'package:flutter/material.dart';
+
+class ExampleStatelessWidget extends StatelessWidget {
+  const ExampleStatelessWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: const Center(
+        child: Text('Text'),
+      ),
+    );
+  }
+}
+```
+
+StatefulWidget
+
+```dart
+import 'package:flutter/material.dart';
+
+class ExampleStatefulWidget extends StatefulWidget {
+  const ExampleStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<ExampleStatefulWidget> createState() => _ExampleStatefulWidgetState();
+}
+
+class _ExampleStatefulWidgetState extends State<ExampleStatefulWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: const Center(
+        child: Text('Text'),
+      ),
+    );
+  }
+}
 ```
