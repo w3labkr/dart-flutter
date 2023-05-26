@@ -13,7 +13,7 @@ A collection of Flutter examples.
   - [Deployment](#deployment)
   - [Commands](#commands)
   - [Widget Examples](#widget-examples)
-  - [Permission Handler](#permission-handler)
+  - [Recommended Packages](#recommended-packages)
 
 ## Installation
 
@@ -131,6 +131,28 @@ flutter doctor
 
 ## Deployment
 
+Edit `android/app/src/main/AndroidMainfest.xml`
+
+```xml
+<manifest ... >
+    <application ...
+        android:label="APPLICATION_NAME">
+        ...
+    </application>
+</manifest>
+```
+
+Edit `ios/Runner/Info.plist` to allow http.
+
+```xml
+<dict>
+    ...
+    <key>CFBundleDisplayName</key>
+    <string>APPLICATION_NAME</string>
+    ...
+</dict>
+```
+
 Web app: `build/web`
 
 ```shell
@@ -143,7 +165,7 @@ Windows app: `build/windows/runner/Release`
 fvm flutter build windows --release
 ```
 
-Android app: `build/app/outputs/flutter-apk`
+Android app: `build/app/outputs/flutter-apk/app-release.apk`
 
 ```shell
 fvm flutter build apk --release --target-platform=android-arm64
@@ -158,11 +180,11 @@ fvm flutter build ios --release
 ## Commands
 
 ```shell
-fvm flutter create --org com.example <APPLICATION_NAME>
+fvm flutter create --org com.example APPLICATION_NAME
 ```
 
 ```shell
-cd <APPLICATION_NAME>
+cd APPLICATION_NAME
 ```
 
 ```shell
@@ -225,6 +247,7 @@ class _ExampleStatefulWidgetState extends State<ExampleStatefulWidget> {
 }
 ```
 
-## Permission Handler
+## Recommended Packages
 
-[PERMISSION HANDLER](PERMISSION_HANDLER.md)
+- [PERMISSION_HANDLER](PERMISSION_HANDLER.md)
+- [LAUNCHER_ICONS](LAUNCHER_ICONS.md)

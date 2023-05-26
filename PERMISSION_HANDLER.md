@@ -1,7 +1,7 @@
-# Permission handler
+# PERMISSION_HANDLER
 
 ## Table of contents
-- [Permission handler](#permission-handler)
+- [PERMISSION\_HANDLER](#permission_handler)
   - [Table of contents](#table-of-contents)
   - [Installation](#installation)
   - [Configure](#configure)

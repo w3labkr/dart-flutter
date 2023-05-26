@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'tab_screen.dart';
-import 'tab_scrollable_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -47,29 +47,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _currentIndex = 0;
+  late final WebViewController _webViewController;
 
-  final List<Widget> _body = const [
-    TabScreen(),
-    TabScrollableScreen(),
-  ];
+  @override
+  void initState() {
+    super.initState();
 
-  void _onTap(int index) {
-    setState(() => _currentIndex = index);
+    _webViewController = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..loadRequest(Uri.parse('https://flutter.dev'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _body.elementAt(_currentIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.tab), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.tab), label: "Scrollable")
-        ],
-        onTap: _onTap,
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed,
+      body: SafeArea(
+        bottom: false,
+        child: WebViewWidget(controller: _webViewController),
       ),
     );
   }
