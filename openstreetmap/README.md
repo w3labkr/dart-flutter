@@ -26,8 +26,8 @@ samples, guidance on mobile development, and a full API reference.
   A wrapper around InheritedWidget to make them easier to use and more reusable.
 
   ```shell
-  flutter pub add flutter_map
-  flutter pub add latlong2
+  fvm flutter pub add flutter_map
+  fvm flutter pub add latlong2
   ```
 
   Import it
@@ -40,7 +40,7 @@ samples, guidance on mobile development, and a full API reference.
   Provides beautiful animated marker clustering functionality for flutter_map. Inspired by Leaflet.markercluster
 
   ```shell
-  flutter pub add flutter_map_marker_cluster
+  fvm flutter pub add flutter_map_marker_cluster
   ```
 
   Import it
@@ -53,7 +53,7 @@ samples, guidance on mobile development, and a full API reference.
   Android and iOS Geolocation plugin for Flutter
 
   ```shell
-  flutter pub add geolocator
+  fvm flutter pub add geolocator
   ```
 
   Import it
@@ -66,7 +66,7 @@ samples, guidance on mobile development, and a full API reference.
   A Flutter plugin for launching a URL.
 
   ```shell
-  flutter pub add url_launcher
+  fvm flutter pub add url_launcher
   ```
 
   Import it
@@ -102,4 +102,19 @@ Edit `android/app/src/main/AndroidMainfest.xml`
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     ...
 </manifest>
+```
+
+Edit `android/app/src/main/AndroidMainfest.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<plist ... >
+<dict>
+    ...
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key><true/>
+    </dict>
+</dict>
+</plist>
 ```

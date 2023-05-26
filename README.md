@@ -12,7 +12,8 @@ A collection of Flutter examples.
     - [Install Visual Studio](#install-visual-studio)
   - [Deployment](#deployment)
   - [Commands](#commands)
-  - [Examples](#examples)
+  - [Widget Examples](#widget-examples)
+  - [Permission Handler](#permission-handler)
 
 ## Installation
 
@@ -130,10 +131,28 @@ flutter doctor
 
 ## Deployment
 
-Android app: `build\app\outputs\flutter-apk\app-release.apk`
+Web app: `build/web`
+
+```shell
+fvm flutter build web --release
+```
+
+Windows app: `build/windows/runner/Release`
+
+```shell
+fvm flutter build windows --release
+```
+
+Android app: `build/app/outputs/flutter-apk`
 
 ```shell
 fvm flutter build apk --release --target-platform=android-arm64
+```
+
+Ios app: `build/ios/iphoneos`
+
+```shell
+fvm flutter build ios --release
 ```
 
 ## Commands
@@ -152,6 +171,8 @@ fvm flutter pub get
 
 ```shell
 fvm flutter run
+fvm flutter run -d chrome
+fvm flutter run -d windows
 ```
 
 ```shell
@@ -163,7 +184,7 @@ fvm flutter pub upgrade
 fvm flutter clean
 ```
 
-## Examples
+## Widget Examples
 
 StatelessWidget
 
@@ -176,9 +197,7 @@ class ExampleStatelessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text('Text'),
-      ),
+      body: const Center(child: Text('Text')),
     );
   }
 }
@@ -200,10 +219,12 @@ class _ExampleStatefulWidgetState extends State<ExampleStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text('Text'),
-      ),
+      body: const Center(child: Text('Text')),
     );
   }
 }
 ```
+
+## Permission Handler
+
+[PERMISSION HANDLER](PERMISSION_HANDLER.md)

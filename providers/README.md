@@ -27,7 +27,7 @@ samples, guidance on mobile development, and a full API reference.
   A wrapper around InheritedWidget to make them easier to use and more reusable.
 
   ```shell
-  flutter pub add provider
+  fvm flutter pub add provider
   ```
 
   Import it
