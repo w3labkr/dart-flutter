@@ -47,16 +47,6 @@ Edit `android/app/src/main/AndroidMainfest.xml`
 </manifest>
 ```
 
-Edit `android/app/build.gradle`
-
-```txt
-android {
-    defaultConfig {
-        minSdkVersion 19
-    }
-}
-```
-
 Edit `android/app/src/main/AndroidMainfest.xml` to allow http.
 
 ```xml
@@ -66,6 +56,16 @@ Edit `android/app/src/main/AndroidMainfest.xml` to allow http.
         ...
     </application>
 </manifest>
+```
+
+Edit `android/app/build.gradle`
+
+```txt
+android {
+    defaultConfig {
+        minSdkVersion 19
+    }
+}
 ```
 
 Edit `ios/Runner/Info.plist` to allow http.

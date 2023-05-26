@@ -1,4 +1,4 @@
-# openstreetmap
+# openstreetmap_cluster
 
 A new Flutter project.
 
@@ -18,6 +18,7 @@ samples, guidance on mobile development, and a full API reference.
 ## Screenshot
 
 ![Screenshot](./Screenshot.png)
+![Screenshot2](./Screenshot2.png)
 
 ## Installing
 
@@ -33,6 +34,45 @@ samples, guidance on mobile development, and a full API reference.
 
   ```dart
   import 'package:flutter_map/flutter_map.dart';
+  ```
+
+- [flutter_map_marker_cluster](https://github.com/lpongetti/flutter_map_marker_cluster)  
+  Provides beautiful animated marker clustering functionality for flutter_map. Inspired by Leaflet.markercluster
+
+  ```shell
+  fvm flutter pub add flutter_map_marker_cluster
+  ```
+
+  Import it
+
+  ```dart
+  import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
+  ```
+
+- [flutter-geolocator](https://github.com/Baseflow/flutter-geolocator)  
+  Android and iOS Geolocation plugin for Flutter
+
+  ```shell
+  fvm flutter pub add geolocator
+  ```
+
+  Import it
+
+  ```shell
+  import 'package:geolocator/geolocator.dart';
+  ```
+
+- [url_launcher](https://github.com/flutter/packages/tree/main/packages/url_launcher/url_launcher)  
+  A Flutter plugin for launching a URL.
+
+  ```shell
+  fvm flutter pub add url_launcher
+  ```
+
+  Import it
+
+  ```shell
+  import 'package:url_launcher/url_launcher.dart';
   ```
 
 ## Configure
