@@ -10,10 +10,12 @@ A collection of Flutter examples.
     - [Flutter Version Manager](#flutter-version-manager)
     - [Install Android Studio](#install-android-studio)
     - [Install Visual Studio](#install-visual-studio)
-  - [Deployment](#deployment)
+  - [Usage](#usage)
   - [Commands](#commands)
-  - [Widget Examples](#widget-examples)
+  - [Deployment](#deployment)
+  - [Examples](#examples)
   - [Recommended Packages](#recommended-packages)
+  - [Troubleshooting](#troubleshooting)
 
 ## Installation
 
@@ -31,6 +33,36 @@ C:\Program Files\flutter\bin
 
 ### Flutter Version Manager
 
+**MacOS**
+
+install
+
+```shell
+brew tap leoafarias/fvm
+brew install fvm
+```
+
+uninstall
+
+```shell
+brew uninstall fvm
+brew untap leoafarias/fvm
+```
+
+zsh
+
+```shell
+$ vim ~/.zshrc
+
+# >>> fvm initialize >>>
+export PATH="$PATH:$HOME/fvm/default/bin"
+# <<< fvm initialize <<<
+
+$ exec "$SHELL"
+```
+
+**Windows**
+
 <https://fvm.app/docs/getting_started/installation/>
 
 Run as administrator in `powershell`
@@ -43,37 +75,23 @@ Edit environment variables for your account.
 
 ```txt
 C:\Users\<USERNAME>\AppData\Local\Pub\Cache\bin
-```
-
-```shell
-fvm releases
-```
-
-```shell
-fvm install 3.7.12
-```
-
-```shell
-fvm global 3.7.12
-```
-
-Edit environment variables for your account.
-
-```txt
 C:\Users\<USERNAME>\fvm\default\bin
 ```
 
-```shell
-fvm list
-```
+**Configure**
 
 ```shell
-fvm use 3.7.12
+fvm config
+fvm flutter doctor
 ```
 
-Automatic Switching (Recommended)
+`.gitignore`
 
-Edit `.vscode/settings.json`:
+```txt
+.fvm/flutter_sdk
+```
+
+`.vscode/settings.json`
 
 ```json
 {
@@ -129,6 +147,65 @@ flutter config --no-enable-windows-desktop
 flutter doctor
 ```
 
+## Usage
+
+```shell
+fvm releases
+```
+
+```shell
+fvm install 3.7.12
+```
+
+```shell
+fvm remove 3.7.12
+```
+
+```shell
+fvm list
+```
+
+```shell
+fvm global 3.7.12
+```
+
+```shell
+fvm use 3.7.12
+```
+
+```shell
+fvm doctor
+```
+
+## Commands
+
+```shell
+fvm flutter create --org com.example APPLICATION_NAME
+```
+
+```shell
+cd APPLICATION_NAME
+```
+
+```shell
+fvm flutter pub get
+```
+
+```shell
+fvm flutter run
+fvm flutter run -d chrome
+fvm flutter run -d windows
+```
+
+```shell
+fvm flutter pub outdated
+fvm flutter pub upgrade
+```
+
+```shell
+fvm flutter clean
+```
+
 ## Deployment
 
 Edit `android/app/src/main/AndroidMainfest.xml`
@@ -177,36 +254,7 @@ Ios app: `build/ios/iphoneos`
 fvm flutter build ios --release
 ```
 
-## Commands
-
-```shell
-fvm flutter create --org com.example APPLICATION_NAME
-```
-
-```shell
-cd APPLICATION_NAME
-```
-
-```shell
-fvm flutter pub get
-```
-
-```shell
-fvm flutter run
-fvm flutter run -d chrome
-fvm flutter run -d windows
-```
-
-```shell
-fvm flutter pub outdated
-fvm flutter pub upgrade
-```
-
-```shell
-fvm flutter clean
-```
-
-## Widget Examples
+## Examples
 
 StatelessWidget
 
@@ -251,3 +299,45 @@ class _ExampleStatefulWidgetState extends State<ExampleStatefulWidget> {
 
 - [PERMISSION_HANDLER](PERMISSION_HANDLER.md)
 - [LAUNCHER_ICONS](LAUNCHER_ICONS.md)
+
+## Troubleshooting
+
+```bash
+flutter doctor
+```
+
+dart on your path resolves to…
+
+```bash
+brew uninstall dart
+```
+
+Android toolchain
+
+```bash
+sudo softwareupdate --install-rosetta --agree-to-license
+```
+
+Xcode - develop for iOS and macOS
+
+```bash
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -runFirstLaunch
+```
+
+Cocoapods not installed.
+
+```bash
+brew install cocoapods
+brew link --overwrite cocoapods
+```
+
+if need unlink & link again
+
+```bash
+brew unlink cocoapods && brew link cocoapods
+```
+
+```bash
+flutter --version
+```
